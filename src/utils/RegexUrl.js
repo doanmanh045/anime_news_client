@@ -7,4 +7,3 @@ export const convertUrlSlug = (value) => {
     })
     return url
 }
-

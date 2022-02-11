@@ -16,10 +16,7 @@ export default function Manga() {
                 <div className="manga__wrap--item">
                     <a href="#" target="_blank">
                         <Image className="manga-item-thumbnail" src={ItemManga} />
-                        <div className="manga-item-title">
-                            <span>
-                                Hội Pháp Sư: Nhiệm Vụ Trăm Năm
-                            </span>
+                        <div className="manga-item-title">Hội Pháp Sư: Nhiệm Vụ Trăm Năm
                         </div>
                         <div className="manga-item-meta-info">
                             <span className="manga-item-label">

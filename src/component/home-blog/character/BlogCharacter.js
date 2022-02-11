@@ -34,9 +34,9 @@ export default function BlogCharacter({ categoryTitle }) {
                     {categoryTitle}
                 </div>
             </div>
-            {blogBigs?.length > 0 &&
+            {blogBigs.length > 0 &&
                 <Link href={`/blog/${convertUrlSlug(blogBigs[0]?.title.substring(0, 35))}-${blogBigs[0]?.id}`} >
-                    <div className="item__medium" style={{cursor:'pointer'}} >
+                    <div className="item__medium">
                         <div className="item__medium--thumbnail">
                             {blogBigs[0]?.photoURL ? <Image unoptimized loader={() => { return `${blogBigs[0]?.photoURL}` }} src={blogBigs[0]?.photoURL} width='500' height="225" />
                                 : <Image src={require('../../../images/item.jpg')} width='300' height="325" />
@@ -53,10 +53,10 @@ export default function BlogCharacter({ categoryTitle }) {
                 </Link>
 
             }
-            {blogLists?.length > 0 && blogLists.map((blog, index) => {
+            {blogLists.length > 0 && blogLists.map((blog, index) => {
                 return (
                     <Link href={`/blog/${convertUrlSlug(blog?.title.substring(0, 35))}-${blog?.id}`} key={index} >
-                        <li style={{cursor:'pointer'}} >{blog?.title}</li>
+                        <li>{blog?.title}</li>
                     </Link>
                 )
             })}

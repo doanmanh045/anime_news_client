@@ -36,44 +36,47 @@ export default function JapanCultural() {
                     </div>
                 </div>
                 <div className='wrapper-super'>
-                    {blogBigs?.length > 0 &&
-                        <Link href={`/blog/${convertUrlSlug(blogBigs[0].title.substring(0, 35))}-${blogBigs[0].id}`}>
-                            <div className='item__large' style={{cursor:'pointer'}} >
-                                <div className='item__large--thumbnail'>
-                                    {blogBigs[0]?.photoURL ? <Image unoptimized loader={() => { return `${blogBigs[0]?.photoURL}` }} src={blogBigs[0]?.photoURL} width='500' height="225" />
-                                        : <Image src={require('../../../images/item.jpg')} width='500' height="225" />
-                                    }
-                                </div>
-                                <div className="item__large--meta">
-                                    <span className="item-large-genre genre-5 has-background">Văn hóa Nhật Bản</span>
-                                    <h3 className="item-large-title">{blogBigs[0]?.title}</h3>
-                                    <div className="item-large-info">
-                                        <span>{blogBigs[0]?.createdDate.toDate().toLocaleString('vi')}</span>
-                                        <span> - {blogBigs[0]?.views} lượt xem</span>
-                                    </div>
-                                </div>
+                    {blogBigs.length > 0 && <div className='item__large'>
+                        <div className='item__large--thumbnail'>
+                            <a href='#'>
+                                {blogBigs[0]?.photoURL ? <Image unoptimized loader={() => { return `${blogBigs[0]?.photoURL}` }} src={blogBigs[0]?.photoURL} width='500' height="225" />
+                                    : <Image src={require('../../../images/item.jpg')} width='500' height="225" />
+                                }
+                            </a>
+                        </div>
+                        <div className="item__large--meta">
+                            <a href="#" className='lg-hidden'>
+                                <span className="item-large-genre genre-5 has-background">Văn hóa Nhật Bản</span>
+                            </a>
+                            <a href="#"><h3 className="item-large-title">{blogBigs[0]?.title}</h3></a>
+                            <div className="item-large-info">
+                                <span>{blogBigs[0]?.createdDate.toDate().toLocaleString('vi')}</span>
+                                <span> - {blogBigs[0]?.views} lượt xem</span>
                             </div>
-                        </Link>
-                    }
+                        </div>
+                    </div>}
 
                     <div className='wrapper-medium'>
-                        {blogLists?.length > 0 && blogLists.map((blog, index) => {
+                        {blogLists.length > 0 && blogLists.map((blog, index) => {
                             return (
-                                <Link href={`/blog/${convertUrlSlug(blog.title.substring(0, 35))}-${blog.id}`} key={index} >
-                                    <div className='item__medium' style={{ cursor: 'pointer' }} >
+                                <Link href={`/blog/${convertUrlSlug(blog.title.substring(0, 35))}-${blog.id}`} >
+                                    <div className='item__medium' key={index} >
                                         <div className='item__thumbnail'>
                                             {blog?.photoURL ? <Image unoptimized loader={() => { return `${blog?.photoURL}` }} src={blog?.photoURL} width='500' height="225" />
                                                 : <Image src={require('../../../images/item.jpg')} width='500' height="225" />
                                             }
                                         </div>
                                         <div className='item__content'>
-                                            <h3 className="item__title">{blog?.title}</h3>
+                                            <a href='#'>
+                                                <h3 className="item__title">{blog?.title}</h3>
+                                            </a>
                                             <span className="item-date">{blog?.createdDate?.toDate().toLocaleString('vi')}</span>
                                             &nbsp;
                                             <span className="item-views"> - {blog?.views} lượt xem</span>
                                             <p className="item-description">{blog?.metaDescription}</p>
                                         </div>
                                     </div>
+
                                 </Link>
                             )
                         })}

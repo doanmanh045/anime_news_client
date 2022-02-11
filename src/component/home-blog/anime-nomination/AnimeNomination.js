@@ -1,9 +1,12 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { convertUrlSlug } from '../../../utils/RegexUrl';
+import LargeItem from '../../../images/blog/middle-item.jpg';
+import MediumItem from '../../../images/blog/item-left.jpg';
+import SmallThumbnail from '../../../images/blog/small-thumbnail.jpg'
+import Image from 'next/image'
 import { searchBlogByCategory } from '../../../utils/searchBlogByCategory';
 import { searchCategoryByTitle } from '../../../utils/searchCategoryByTitle';
+import Link from 'next/link';
+import { convertUrlSlug } from '../../../utils/RegexUrl';
 export default function AnimeNomination() {
     const [blogLefts, setBlogLefts] = useState([]);
     const [blogMediums, setBlogMediums] = useState([]);
@@ -45,7 +48,7 @@ export default function AnimeNomination() {
                     {blogLefts?.length > 0 && blogLefts.map((blog, index) => {
                         return (
                             <Link href={`/blog/${convertUrlSlug(blog?.title.substring(0, 35))}-${blog?.id}`} key={index} >
-                                <div className='large__col--item'>
+                                <div className='large__col--item'  >
                                     <div className='wrapper'>
                                         {blog?.photoURL ? <Image unoptimized loader={() => { return `${blog?.photoURL}` }} src={blog?.photoURL} width='500' height="225" />
                                             : <Image src={require('../../../images/item.jpg')} width='500' height="225" />
@@ -66,10 +69,10 @@ export default function AnimeNomination() {
                     })}
                 </div>
                 <div className='anime-nomination__col medium__col'>
-                    {blogMediums?.length > 0 && blogMediums.map((blog, index) => {
+                    {blogMediums.length > 0 && blogMediums.map((blog, index) => {
                         return (
-                            <Link href={`/blog/${convertUrlSlug(blog.title.substring(0, 35))}-${blog.id}`} key={index} >
-                                <div className={`medium__col--item ${index == 3 && 'sm-hidden'}`} style={{cursor:'pointer'}}  >
+                            <Link href={`/blog/${convertUrlSlug(blog.title.substring(0, 35))}-${blog.id}`} >
+                                <div className={`medium__col--item ${index == 3 && 'sm-hidden'}`} key={index} >
                                     <div className='wrapper'>
                                         <div className='top__image'>
                                             {blog?.photoURL ? <Image unoptimized loader={() => { return `${blog?.photoURL}` }} src={blog?.photoURL} width='300' height="225" />
@@ -78,13 +81,17 @@ export default function AnimeNomination() {
                                         </div>
                                         <div className='bottom__content'>
                                             <div className='item-meta'>
-                                                <span className="item-genre">Đề cử anime </span>
+                                                <a href='#'>
+                                                    <span className="item-genre">Đề cử anime </span>
+                                                </a>
                                                 <span className="item-date">
                                                     / {blog?.createdDate.toDate().toLocaleString('vi')}
                                                 </span>
-                                                <h3 className='item__title'>
-                                                    {blog?.title}
-                                                </h3>
+                                                <a href='#'>
+                                                    <h3 className='item__title'>
+                                                        {blog?.title}
+                                                    </h3>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -100,7 +107,7 @@ export default function AnimeNomination() {
                         }
                     </div>
                     <div className='wrapper'>
-                        {blogRights?.length > 0 && blogRights.map((blog, index) => {
+                        {blogRights.length > 0 && blogRights.map((blog, index) => {
                             return (
                                 <Link href={`/blog/${convertUrlSlug(blog.title.substring(0, 35))}-${blog.id}`} >
                                     <div className='xs-item' key={index} >

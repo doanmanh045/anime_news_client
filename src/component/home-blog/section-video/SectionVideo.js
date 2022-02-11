@@ -1,8 +1,6 @@
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { searchVideoByCategory } from '../../../utils/searchVideoByCategory';
-import Link from 'next/link';
-import { convertUrlSlug } from '../../../utils/RegexUrl';
 export default function SectionVideo() {
     const [videoBigs, setVideoBigs] = useState([]);
     const [videoLists, setVideoLists] = useState([]);
@@ -30,38 +28,39 @@ export default function SectionVideo() {
                 <div className='big-wrapper'>
                     <div className='left__col'>
                         <a href='#' target='blank'>
-                            {videoBigs?.length > 0 &&
-                                <Link href={`/video/${convertUrlSlug(videoBigs[0].title.substring(0, 35))}-${videoBigs[0].id}`}  >
-                                    <div className='wrapper big-video'>
-                                        <div className='wrapper-image rps-iframe'>
-                                            {videoBigs[0]?.photoURL ? <Image unoptimized loader={() => { return `${videoBigs[0]?.photoURL}` }} src={videoBigs[0]?.photoURL} width='300' height="225" />
-                                                : <Image src={require('../../../images/item.jpg')} width='600' height="225" />
-                                            }
-                                        </div>
-                                        <div className='left__col--content'>
-                                            <div className="section-video-item-play">
-                                                <svg width="24" height="24" viewBox="0 0 24 24">
-                                                    <path fill="currentColor" d="M8,5.14V19.14L19,12.14L8,5.14Z" />
-                                                </svg>
-                                            </div>
-                                            <div className="section-video-item-meta item-meta">
-                                                <span className="section-video-item-channel item-genre">{videoBigs[0]?.category?.title}</span>
-                                                &nbsp;
-                                                <span className="section-video-item-date item-date">/
-                                                    &nbsp;  {videoBigs[0]?.createdDate?.toDate()?.toLocaleString('vi')}
-                                                </span>
-                                                <h3 className="section-video-item-title item__title">{videoBigs[0]?.title}</h3>
-                                            </div>
-                                        </div>
+                            {videoBigs?.length > 0 && <div className='wrapper big-video'>
+                                <div className='wrapper-image rps-iframe'>
+                                    {videoBigs[0]?.photoURL ? <Image unoptimized loader={() => { return `${videoBigs[0]?.photoURL}` }} src={videoBigs[0]?.photoURL} width='300' height="225" />
+                                        : <Image src={require('../../../images/item.jpg')} width='600' height="225" />
+                                    }
+                                </div>
+                                <div className='left__col--content'>
+                                    <div className="section-video-item-play">
+                                        <svg width="24" height="24" viewBox="0 0 24 24">
+                                            <path fill="currentColor" d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+                                        </svg>
                                     </div>
-                                </Link>
+                                    <div className="section-video-item-meta item-meta">
+                                        <a href="#" target="_blank">
+                                            <span className="section-video-item-channel item-genre">ClipAnime</span>
+                                        </a>
+                                        &nbsp;
+                                        <span className="section-video-item-date item-date">/
+                                            22-06-2020
+                                        </span>
+                                        <a href="#" target="_blank"><h3 className="section-video-item-title item__title">Narancia vs Formaggio AMV</h3></a>
+                                        <p className="section-video-item-description">Song bearthoot Enemy</p>
+                                    </div>
+                                </div>
+                            </div>
                             }
+
                         </a>
                     </div>
                     <div className='right__col'>
-                        {videoLists?.length > 0 && videoLists.map((video, index) => {
+                        {videoLists.length > 0 && videoLists.map((video, index) => {
                             return (
-                                <Link href={`/video/${convertUrlSlug(video.title.substring(0, 35))}-${video.id}`} key={index}  >
+                                <a href='#' target='blank' key={index} >
                                     <div className='item__video'>
                                         <div className='thumbnail__video'>
                                             {video?.photoURL ? <Image unoptimized loader={() => { return `${video?.photoURL}` }} src={video?.photoURL} width='300' height="225" />
@@ -74,15 +73,19 @@ export default function SectionVideo() {
                                             </div>
                                         </div>
                                         <div className='content__video'>
-                                            <span className="section-video-item-channel item-genre">{video?.category?.title}</span>
+                                            <a href="#" target="_blank">
+                                                <span className="section-video-item-channel item-genre">{video?.category?.title}</span>
+                                            </a>
                                             &nbsp;
                                             <span className="section-video-item-date item-date">/
-                                                &nbsp; {video?.createdDate?.toDate().toLocaleString('vi')}
+                                                {video?.createdDate?.toDate().toLocaleString('vi')}
                                             </span>
-                                            <h3 className="video-item-title"><h3 className="section-video-item-title">{video?.title}</h3></h3>
+                                            <a href='#'>
+                                                <h3 className="video-item-title"><h3 className="section-video-item-title">{video?.title}</h3></h3>
+                                            </a>
                                         </div>
                                     </div>
-                                </Link>
+                                </a>
                             )
                         })}
                     </div>

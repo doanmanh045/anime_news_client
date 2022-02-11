@@ -1,8 +1,6 @@
 import React from 'react'
-import BigLogo from '../../images/logo.png';
-import SmLogo from '../../images/smlogo.png';
+import Logo from '../../images/logo.png';
 import Image from 'next/image';
-import Link from 'next/link';
 export default function HeaderBlog() {
     return (
         <header>
@@ -12,14 +10,16 @@ export default function HeaderBlog() {
                         <div className='wrapper__header--left'>
                             <div className="logo">
                                 <a href="/">
-                                    <Image className='big-logo' src={BigLogo} alt='' />
-                                    {/* <Image className='sm-logo' src={SmLogo} alt='' /> */}
+                                    <Image src={Logo} alt='' />
                                 </a>
                             </div>
                             <div className="navbar__menu">
                                 <ul className='navbar__menu--list'>
-                                    <Link href="/" ><li style={{cursor:'pointer'}} >Tin Tức</li></Link>
-                                    <Link href="/video"><li style={{cursor:'pointer'}} >Video</li></Link>
+                                    <a href="#"><li>Tin Tức</li></a>
+                                    <a href="#" target="_blank" className="visible-480"><li>Video</li></a>
+
+                                    <a href="#" target="_blank" className="visible-480"><li>Anime</li></a>
+                                    <a href="#" target="_blank" className="visible-480"><li>Manga</li></a>
                                 </ul>
                             </div>
                         </div>

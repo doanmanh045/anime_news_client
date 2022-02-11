@@ -38,7 +38,7 @@ export default function InDayBlog() {
                 </div>
             </div>
             <div className='anime-news__right--video collumn-medium'>
-                {blogs?.length > 0 && blogs.map((blog, index) => {
+                {blogs.length > 0 && blogs.map((blog, index) => {
                     return (
                         <Link href={`/blog/${convertUrlSlug(blog.title.substring(0, 35))}-${blog.id}`} >
                             <div className={`item__video ${index > 3 && ` lg-hidden`} `} key={index} >

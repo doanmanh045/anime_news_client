@@ -1,20 +1,19 @@
-import moment from 'moment';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
-import { getElementsArray } from '../../utils/ElementsArray';
 import { firestore } from '../../utils/firebaseInit';
-import { convertUrlSlug } from '../../utils/RegexUrl';
-export default function BlogRecently({ blogId }) {
+import moment from 'moment';
+export default function BlogRecently() {
     const [blogs, setBlogs] = useState([]);
+    const LIMIT = 5;
     useEffect(() => {
         search()
-    }, [blogId])
+    }, [])
     const search = async () => {
         try {
             let filter = firestore
                 .collection("Blog")
                 .orderBy("createdDate", "desc")
+                .limit(LIMIT)
 
             if (blogs && blogs.length > 0) {
                 filter = filter.startAfter(blogs[blogs.length - 1].createdDate)
@@ -24,8 +23,8 @@ export default function BlogRecently({ blogId }) {
             querySnapshot.forEach(doc => {
                 resp.push({ ...doc.data(), id: doc.id })
             });
-            let filterCurrentDay = resp.filter(item => moment(item.writeDate, "YYYY-MM-DD").format("YYYY-MM-DD") <= moment(new Date()).format("YYYY-MM-DD") && item.id !== blogId)
-            setBlogs(getElementsArray(filterCurrentDay,5));
+            let filterCurrentDay = resp.filter(item => moment(item.writeDate, "YYYY-MM-DD").format("YYYY-MM-DD") <= moment(new Date()).format("YYYY-MM-DD"))
+            setBlogs(filterCurrentDay);
         } catch {
             error => {
                 console.log(error)
@@ -43,23 +42,21 @@ export default function BlogRecently({ blogId }) {
             <div className='xs-wrapper'>
                 {blogs.length > 0 && blogs.map((blog, index) => {
                     return (
-                        <Link href={`/blog/${convertUrlSlug(blog.title.substring(0, 35))}-${blog.id}`} key={index} >
-                            <div className='xs-item' style={{ cursor: 'pointer', marginBottom: 10 }} >
-                                <div className='item__small--thumbnail item__thumbnail'>
-                                    {blog?.photoURL ? <Image unoptimized loader={() => { return `${blog?.photoURL}` }} src={blog?.photoURL} width='300' height="150" />
-                                        : <Image src={require('../../images/item.jpg')} width='300' height="180" />
-                                    }
-                                </div>
-                                <div className='item__small--content'>
-                                    <a href='#'>
-                                        <h3 className="item__title">{blog?.title}</h3>
-                                    </a>
-                                    <a href='#'>
-                                        <span className="item-genre genre-9">{blog?.category?.title}</span>
-                                    </a>
-                                </div>
+                        <div className='xs-item' key={index} >
+                            <div className='item__small--thumbnail item__thumbnail'>
+                                {blog?.photoURL ? <Image unoptimized loader={() => { return `${blog?.photoURL}` }} src={blog?.photoURL} width='300' height="180" />
+                                    : <Image src={require('../../images/item.jpg')} width='300' height="180" />
+                                }
                             </div>
-                        </Link>
+                            <div className='item__small--content'>
+                                <a href='#'>
+                                    <h3 className="item__title">{blog?.title}</h3>
+                                </a>
+                                <a href='#'>
+                                    <span className="item-genre genre-9">{blog?.category?.title}</span>
+                                </a>
+                            </div>
+                        </div>
                     )
                 })}
             </div>

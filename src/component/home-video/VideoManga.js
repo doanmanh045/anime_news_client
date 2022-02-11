@@ -26,14 +26,11 @@ export default function VideoManga() {
                 {videos?.length > 0 && videos.map((video, index) => {
                     return (
                         <Link href={`/video/${convertUrlSlug(video.title.substring(0, 35))}-${video.id}`} key={index} >
-                            <div className="manga__wrap--item" style={{ cursor: 'pointer' }} >
+                            <div className="manga__wrap--item" style={{cursor:'pointer'}} >
                                 {video?.photoURL ? <Image unoptimized loader={() => { return `${video?.photoURL}` }} src={video?.photoURL} width='220' height="325" />
                                     : <Image src={require('../../images/item.jpg')} width='220' height="325" />
                                 }
-                                <div className="manga-item-title">
-                                    <span>
-                                        {video?.title}
-                                    </span>
+                                <div className="manga-item-title">{video?.title}
                                 </div>
                                 <div className="manga-item-meta-info">
                                     <span className="manga-item-label">

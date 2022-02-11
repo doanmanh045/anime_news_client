@@ -1,6 +1,6 @@
 import DetailBlog from "../../src/component/detail-blog/DetailBlog";
 import { firestore } from "../../src/utils/firebaseInit";
-import HeaderBlog from '../../src/component/share/HeaderBlog'
+
 export async function getServerSideProps(context) {
     const url = context.query.id;
     const id = url.substring(url.lastIndexOf("-") + 1)
@@ -20,7 +20,6 @@ export async function getServerSideProps(context) {
 function BlogDetail({ blog }) {
     return (
         <>
-            <HeaderBlog />
             <DetailBlog blog={blog} />
         </>
     );

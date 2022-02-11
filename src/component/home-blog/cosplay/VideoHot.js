@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { searchVideoByCategory } from '../../../utils/searchVideoByCategory';
-import Link from 'next/link';
-import { convertUrlSlug } from '../../../utils/RegexUrl';
+
 export default function VideoHot() {
     const [videos, setVideos] = useState([]);
     useEffect(() => {
@@ -21,10 +20,10 @@ export default function VideoHot() {
                 </div>
             </div>
             <div className='collumn-right__item'>
-                {videos?.length > 0 && videos.map((video, index) => {
+                {videos?.length > 0 && videos?.map((video, index) => {
                     return (
-                        <Link href={`/video/${convertUrlSlug(video.title.substring(0, 35))}-${video.id}`} key={index}  >
-                            <div className='item__video' style={{cursor:'pointer'}} >
+                        <a href='#' target='blank' key={index}>
+                            <div className='item__video'>
                                 <div className='thumbnail__video'>
                                     {video?.photoURL ? <Image unoptimized loader={() => { return `${video?.photoURL}` }} src={video?.photoURL} width='300' height="225" />
                                         : <Image src={require('../../../images/item.jpg')} width='300' height="225" />
@@ -36,15 +35,17 @@ export default function VideoHot() {
                                     </div>
                                 </div>
                                 <div className='content__video'>
-                                    <h3 className="video-item-title">{video?.title}</h3>
-                                    <span className="video-item-channel item-genre">{video?.category?.title}</span>
+                                    <a href='#'>
+                                        <h3 className="video-item-title">{video?.title}</h3>
+                                    </a>
+                                    <a href="#"><span className="video-item-channel item-genre">{video?.category?.title}</span></a>
                                     &nbsp;
                                     <span className="video-item-date">
                                         / {video?.createdDate?.toDate().toLocaleString('vi')}
                                     </span>
                                 </div>
                             </div>
-                        </Link>
+                        </a>
                     )
                 })}
 

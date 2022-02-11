@@ -48,9 +48,9 @@ export default function NewestBlog() {
                 </div>
             </div>
             <div className='wrapper-item__news'>
-                {blogs?.length > 0 && blogs.map((blog, index) => {
+                {blogs.length > 0 && blogs.map((blog, index) => {
                     return (
-                        <Link href={`/blog/${convertUrlSlug(blog.title.substring(0, 35))}-${blog.id}`} key={index} >
+                        <Link href={`/blog/${convertUrlSlug(blog.title.substring(0, 35))}-${blog.id}`} >
                             <div className='anime-news__left--item' key={index} >
                                 <div className='item__thumbnail'>
                                     {blog?.photoURL ? <Image unoptimized loader={() => { return `${blog?.photoURL}` }} src={blog?.photoURL} width='500' height="225" />
