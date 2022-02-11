@@ -1,0 +1,95 @@
+.big__wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+}
+
+.character,
+.cosplay {
+    .big__wrapper {
+        display: flex;
+        @media (max-width: 1023px) {
+            flex-wrap: wrap;
+        }
+    }
+    .collumn-medium {
+        @media (min-width: 1024px) {
+            width: calc(100% / 3);
+        }
+        .item-text {
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 20px;
+            color: #333;
+            display: block;
+            &:hover {
+                color: #000;
+            }
+        }
+        .item-medium-title {
+            @media (max-width: 1023px) {
+                margin: 5px 0 0;
+            }
+        }
+    }
+    .collumn-left,
+    .collumn-middle {
+        @media (max-width: 1023px) {
+            width: calc((100% - 10px) / 2) !important;
+        }
+        @media(max-width: 639px){
+            width: 100% !important;
+        }
+    }
+    .collumn-right {
+        @media (max-width: 1023px) {
+            width: 100% !important;
+        }
+        .item__medium {
+            @media (max-width: 1023px) {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+            }
+            @media( max-width: 639px){
+                flex-direction: column;
+            }
+            &--wrapper {
+                @media (max-width: 1023px) {
+                    width: 50%;
+                }
+                @media (max-width: 639px){
+                    width: 100%;
+                }
+            }
+            &--list {
+                @media (max-width: 1023px) {
+                    width: 50%;
+                }
+                @media (max-width: 639px){
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .item__medium {
+        width: 100%;
+        &--thumbnail {
+            @media (max-width: 1023px) {
+                height: 229px;
+            }
+            @media (max-width: 768px){
+                height: 182px;
+            }
+            @media (max-width: 639px){
+                height: 274px;
+            }
+            *{
+                height: 100% !important;
+                width: 100%;
+            }
+        }
+    }
+}

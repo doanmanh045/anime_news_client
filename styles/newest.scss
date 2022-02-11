@@ -1,0 +1,135 @@
+.newest {
+    padding-bottom: 100px;
+    .big__wrapper {
+        width: 100%;
+    }
+}
+
+.wrapper-item__news {
+    display: flex;
+    flex-wrap: wrap;
+    // gap: 10px;
+    @media (max-width: 1023px){
+        gap: 10px;
+    }
+    @media (max-width: 375px){
+        gap: 5px;
+    }
+    img {
+        cursor: pointer;
+    }
+    .anime-news__left--item {
+        .item__thumbnail{
+            width: 259px;
+            height: 154px;
+            span{
+                width: 100% !important;
+                height: 100% !important;
+                img{
+                    height: 100% ;
+                }
+            }
+        }
+        @media (max-width: 1023px) {
+            width: calc((100% - 10px) / 2);
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 0;
+        }
+        @media (max-width: 639px) {
+            width: 100%;
+        }
+        .item__thumbnail {
+            cursor: pointer;
+            @media (max-width: 1023px) {
+                width: 107px;
+                height: 60px;
+                margin-right: 10px;
+            }
+            @media (max-width: 639px) {
+                width: 210px;
+                height: 125px;
+            }
+            @media (max-width: 479px) {
+                width: 142px;
+                height: 80px;
+            }
+            @media (max-width: 375px) {
+                width: 107px;
+                height: 60px;
+            }
+        }
+        .item__content {
+            @media (max-width: 1023px) {
+                width: calc(100% - 117px);
+            }
+            @media (max-width: 639px) {
+                width: calc(100% - 220px);
+            }
+            @media (max-width: 479px) {
+                width: calc(100% - 152px);
+                .item-date {
+                    font-size: 11px;
+                }
+                .item-views {
+                    font-size: 11px;
+                }
+            }
+            @media (max-width: 375px) {
+                width: calc(100% - 117px);
+            }
+            h3.item__title {
+                margin: 8px 0 2px;
+                @media (max-width: 1023px){
+                    margin: 0;
+                    font-size: 14px;
+                }
+                @media (max-width: 479px) {
+                    font-size: 12px;
+                }
+                @media (max-width: 374px) {
+                    font-size: 12px;
+                    line-height: 20px;
+                }
+            }
+        }
+    }
+    .big__thumbnail--description {
+        @media (max-width: 479px) {
+            display: none;
+        }
+    }
+}
+.genre-2.has-background {
+    color: #fff;
+    background-color: rgba(0, 144, 255, 0.7);
+    padding: 3px 8px;
+    font-size: 11px;
+    line-height: 21px;
+    text-transform: uppercase;
+}
+.column-more {
+    clear: both;
+    width: 120px;
+    margin: 20px auto;
+    padding: 5px 10px;
+    background-color: #ff4d00;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    @media (max-width: 1023px){
+        margin: 20px auto;
+    }
+    @media (max-width: 639px) {
+        font-size: 13px;
+        padding: 4px 8px;
+        width: 110px;
+        margin: 15px auto;
+    }
+    @media (max-width: 424px) {
+        font-size: 12px;
+        padding: 3px 6px;
+        width: 100px;
+        margin: 10px auto;
+    }
+}
