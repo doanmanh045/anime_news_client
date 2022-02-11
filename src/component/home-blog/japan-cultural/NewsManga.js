@@ -34,16 +34,16 @@ export default function NewsManga() {
                 </div>
             </div>
             <div className='wrapper-medium'>
-                {blogBigs.length > 0 && <div className="item__medium">
+                {blogBigs?.length > 0 && <div className="item__medium">
                     <div className="item__medium--thumbnail">
-                        <a href="#">
+                        <Link href={`/blog/${convertUrlSlug(blogBigs[0].title.substring(0, 35))}-${blogBigs[0].id}`}>
                             {blogBigs[0]?.photoURL ? <Image unoptimized loader={() => { return `${blogBigs[0]?.photoURL}` }} src={blogBigs[0]?.photoURL} width='500' height="225" />
                                 : <Image src={require('../../../images/item.jpg')} width='500' height="225" />
                             }
-                        </a>
+                        </Link>
                     </div>
                     <div className="item__medium--meta">
-                        <a href="#"><h3 className="item-medium-title">{blogBigs[0]?.title}</h3></a>
+                        <h3 className="item-medium-title">{blogBigs[0]?.title}</h3>
                         <div className="item-medium-info">
                             <span>{blogBigs[0]?.createdDate?.toDate().toLocaleString('vi')}</span>
                             <span> - {blogBigs[0]?.views} lượt xem</span>
@@ -52,10 +52,10 @@ export default function NewsManga() {
                 </div>}
 
                 <div className='wrapper__manga xs__col'>
-                    {blogLists.length > 0 && blogLists.map((blog, index) => {
+                    {blogLists?.length > 0 && blogLists.map((blog, index) => {
                         return (
-                            <Link href={`/blog/${convertUrlSlug(blog.title.substring(0, 35))}-${blog.id}`} >
-                                <div className={`xs-item ${index > 2 && ' lg-hiden'}`} key={index} >
+                            <Link href={`/blog/${convertUrlSlug(blog.title.substring(0, 35))}-${blog.id}`} key={index} >
+                                <div className={`xs-item ${index > 2 && ' lg-hiden'}`} >
                                     <div className='item__small--thumbnail item__thumbnail'>
                                         {blog?.photoURL ? <Image unoptimized loader={() => { return `${blog?.photoURL}` }} src={blog?.photoURL} width='500' height="225" />
                                             : <Image src={require('../../../images/item.jpg')} width='500' height="225" />

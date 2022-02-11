@@ -58,23 +58,18 @@ export default function MainSlide() {
                 {blogs?.length > 0 && <Slider {...settings}>
                     {blogs?.map((blog, index) => {
                         return (
-                            <Link href={`/blog/${convertUrlSlug(blog.title.substring(0, 35))}-${blog.id}`} >
-                                <div className='main-slide__item' key={index} >
+                            <Link href={`/blog/${convertUrlSlug(blog.title.substring(0, 35))}-${blog.id}`} key={index} >
+                                <div className='main-slide__item' style={{cursor:'pointer'}}  >
                                     <div className='thumbnail-item'>
-                                        <a href='#'>
-                                            {blog?.photoURL ? <Image unoptimized loader={() => { return `${blog?.photoURL}` }} src={blog?.photoURL} width='300' height="180" />
-                                                : <Image src={require('../../../images/item.jpg')} width='300' height="180" />
-                                            }
-                                        </a>
+                                        {blog?.photoURL ? <Image unoptimized loader={() => { return `${blog?.photoURL}` }} src={blog?.photoURL} width='300' height="180" />
+                                            : <Image src={require('../../../images/item.jpg')} width='300' height="180" />
+                                        }
                                     </div>
                                     <div className='content-item'>
-                                        <a href='#'>
-                                            <h3 className="item-slide-title">[Góc của fan] {blog.title}</h3>
-                                        </a>
+                                        <h3 className="item-slide-title">[Góc của fan] {blog.title}</h3>
                                     </div>
                                 </div>
                             </Link>
-
                         )
                     })}
                 </Slider>}

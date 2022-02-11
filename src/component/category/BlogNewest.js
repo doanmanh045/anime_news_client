@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import moment from 'moment';
-import { firestore } from '../../../utils/firebaseInit';
 import Link from 'next/link';
-import { convertUrlSlug } from '../../../utils/RegexUrl';
-export default function InDayBlog() {
+import { firestore } from '../../utils/firebaseInit';
+import { convertUrlSlug } from '../../utils/RegexUrl';
+export default function BlogNewest({ category }) {
     const [blogs, setBlogs] = useState([]);
     useEffect(() => {
         search()
-    }, [])
+    }, [category.id])
     const search = async () => {
         try {
             let filter = firestore
                 .collection("Blog")
+                .where("category.title", "==", category.title)
                 .orderBy("createdDate", "desc")
                 .limit(5)
             let querySnapshot = await (await filter.get()).docs
@@ -20,7 +21,7 @@ export default function InDayBlog() {
             querySnapshot.forEach(doc => {
                 resp.push({ ...doc.data(), id: doc.id })
             });
-            let data = resp.filter(item => moment(item.writeDate, "YYYY-MM-DD").format("YYYY-MM-DD") == moment(new Date()).format("YYYY-MM-DD"))
+            let data = resp.filter(item => moment(item.writeDate, "YYYY-MM-DD").format("YYYY-MM-DD") < moment(new Date()).format("YYYY-MM-DD"))
             setBlogs(data)
 
         } catch {
@@ -34,7 +35,7 @@ export default function InDayBlog() {
             <div className='section section__title section-title-small'>
                 <div className='section__title--border'></div>
                 <div className='section__title--background'>
-                    TIN HAY TRONG NGÀY
+                    TIN MỚI NHẤT
                 </div>
             </div>
             <div className='anime-news__right--video collumn-medium'>
@@ -45,7 +46,7 @@ export default function InDayBlog() {
                                 <div className='thumbnail__video'>
                                     <div className='wrapper'>
                                         {blog?.photoURL ? <Image unoptimized loader={() => { return `${blog?.photoURL}` }} src={blog?.photoURL} width='500' height="225" />
-                                            : <Image src={require('../../../images/item.jpg')} width='500' height="225" />
+                                            : <Image src={require('../../images/item.jpg')} width='500' height="225" />
                                         }
                                     </div>
                                 </div>

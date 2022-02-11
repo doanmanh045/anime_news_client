@@ -136,6 +136,9 @@
                 font-size: 14px;
                 margin: 0;
             }
+            @media (max-width: 767px){
+                font-size: 12px;
+            }
         }
         .item-description {
             display: -webkit-box;
@@ -147,6 +150,7 @@
             }
             @media (max-width: 639px) {
                 display: -webkit-box;
+                font-size: 10px;
             }
             @media (max-width: 425px) {
                 display: none;
@@ -481,6 +485,9 @@
             @media (max-width: 1023px) {
                 font-size: 14px;
                 margin: 0;
+            }
+            @media (max-width: 767px){
+                font-size: 12px;
             }
         }
     }

@@ -23,7 +23,7 @@ export default function DetailBlog({ blog }) {
         fetchViews()
     }, [])
     return (
-        <div>
+        <div className='detail-page'>
             <div className='container'>
                 <NavHomeBlog />
             </div>
@@ -37,9 +37,7 @@ export default function DetailBlog({ blog }) {
                                 <li>{blog?.views} lượt xem</li>
                             </ul>
                         </div>
-                        <a href="#">
-                            <span className="news-genre genre-9 has-background">Thể loại: {blog?.category?.title}</span>
-                        </a>
+                        <span className="news-genre genre-9 has-background">Thể loại: {blog?.category?.title}</span>
                     </div>
                     <div style={{ fontWeight: 'bold', marginTop: 15 }} >
                         {blog?.metaDescription}
@@ -113,13 +111,13 @@ export default function DetailBlog({ blog }) {
                                 </div>
                             </div>
                             <hr />
-                            <BlogNew />
+                            <BlogNew blogId={blog?.id} />
                         </div>
                     </div>
                 </div>
                 <div className='main-detail__right news-featured xs__col'>
-                    <BlogRecently />
-                    <BlogInDay />
+                    <BlogRecently blogId={blog?.id} />
+                    <BlogInDay blogId={blog?.id} />
                 </div>
             </div>
         </div>

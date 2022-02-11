@@ -1,16 +1,30 @@
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import { searchVideoByCategory } from '../../utils/searchVideoByCategory';
+import { firestore } from '../../utils/firebaseInit';
 import Link from 'next/link';
 import { convertUrlSlug } from '../../utils/RegexUrl';
-export default function VideoManga() {
+import { getElementsArray } from '../../utils/ElementsArray';
+export default function VideoManga({ videoId }) {
     const [videos, setVideos] = useState([])
     useEffect(() => {
         search()
-    }, [])
+    }, [videoId])
     const search = async () => {
-        let data = await searchVideoByCategory('Truyện tranh', 6);
-        setVideos(data)
+        try {
+            let filter = firestore
+                .collection("Video")
+                .where("category.title", "==", "Truyện tranh")
+                .orderBy("createdDate", "desc")
+            let querySnapshot = await (await filter.get()).docs
+            let resp = []
+            querySnapshot.forEach(doc => {
+                resp.push({ ...doc.data(), id: doc.id })
+            });
+            let data = resp.filter(item => item.id !== videoId);
+            setVideos(getElementsArray(data, 6))
+        } catch (error) {
+
+        }
     }
     return (
         <section className='tray manga'>
@@ -30,10 +44,7 @@ export default function VideoManga() {
                                 {video?.photoURL ? <Image unoptimized loader={() => { return `${video?.photoURL}` }} src={video?.photoURL} width='220' height="325" />
                                     : <Image src={require('../../images/item.jpg')} width='220' height="325" />
                                 }
-                                <div className="manga-item-title">
-                                    <span>
-                                        {video?.title}
-                                    </span>
+                                <div className="manga-item-title">{video?.title}
                                 </div>
                                 <div className="manga-item-meta-info">
                                     <span className="manga-item-label">

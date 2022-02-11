@@ -17,7 +17,7 @@ export default function MainHomeVideo() {
         let respBig = [];
         let respBottom = [];
         let respRight = [];
-        data.map((item, index) => {
+        data?.map((item, index) => {
             if (index < 1) {
                 respBig.push(item)
             } else if (index < 4) {
@@ -34,7 +34,7 @@ export default function MainHomeVideo() {
     return (
         <div className='tray section-hero'>
             <div className='row__hero'>
-                {videoBig.length > 0 && <div className='row__hero--left'>
+                {videoBig?.length > 0 && <div className='row__hero--left'>
                     <a href='#' className='hero-cover' target='_blank'>
                         {videoBig[0]?.photoURL ? <Image unoptimized loader={() => { return `${videoBig[0]?.photoURL}` }} src={videoBig[0]?.photoURL} width='1200' height="200" />
                             : <Image src={require('../../images/item.jpg')} width='500' height="380" />
@@ -51,7 +51,7 @@ export default function MainHomeVideo() {
                     </a>
                 </div>}
                 <div className='row__hero--right'>
-                    {videoRights.length > 0 && videoBottoms.map((video, index) => {
+                    {videoRights?.length > 0 && videoBottoms.map((video, index) => {
                         return (
                             <Link href={`/video/${convertUrlSlug(video.title.substring(0, 35))}-${video.id}`} className='right-item' key={index} >
                                 {video?.photoURL ? <Image unoptimized loader={() => { return `${video?.photoURL}` }} src={video?.photoURL} width='400' height="120" />
@@ -63,7 +63,7 @@ export default function MainHomeVideo() {
                 </div>
             </div>
             <div className='row__small md-hidden'>
-                {videoBottoms.length > 0 && videoBottoms.map((video, index) => {
+                {videoBottoms?.length > 0 && videoBottoms.map((video, index) => {
                     return (
                         <a href='#' target='_blank' className='row__small--item' key={index} >
                             {video?.photoURL ? <Image unoptimized loader={() => { return `${video?.photoURL}` }} src={video?.photoURL} width='300' height="220" />

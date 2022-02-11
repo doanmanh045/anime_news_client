@@ -24,7 +24,7 @@ export default function VideoNewest() {
                 </a>
             </div>
             <div className='tray__content episode__item'>
-                {videos.length > 0 && videos.map((video, index) => {
+                {videos?.length > 0 && videos.map((video, index) => {
                     return (
                         <Link href={`/video/${convertUrlSlug(video.title.substring(0, 35))}-${video.id}`} key={index} >
                             <div className='tray__content--item' style={{ cursor: 'pointer' }} >

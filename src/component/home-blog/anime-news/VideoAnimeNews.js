@@ -19,7 +19,7 @@ export default function VideoAnimeNews() {
                     {videos?.map((video, index) => {
                         return (
                             <Link href={`/video/${convertUrlSlug(video?.title.substring(0, 35))}-${video?.id}`} key={index} >
-                                <div className='item__video'>
+                                <div className='item__video' style={{cursor:'pointer'}} >
                                     <div className='thumbnail__video'>
                                         <Image unoptimized loader={() => { return `${video?.photoURL}` }} src={video?.photoURL} width='300' height="225" />
                                         <div className="section-video-item-play">
@@ -29,7 +29,7 @@ export default function VideoAnimeNews() {
                                         </div>
                                     </div>
                                     <div className='content__video'>
-                                        <h3 className="video-item-title">{video.title}</h3>
+                                        <h3 className="video-item-title">{video?.title}</h3>
                                         <span className="video-item-date">
                                             {video.createdDate.toDate().toLocaleString('vi')}
                                         </span>

@@ -20,21 +20,27 @@
     }
     @media (min-width: 640px) and (max-width: 767px) {
         width: 640px !important;
+        padding: 40px 0;
     }
     @media (min-width: 480px) and (max-width: 640px) {
         width: 480px !important;
+        padding: 40px 0;
     }
     @media (min-width: 412px) and (max-width: 480px) {
         width: 412px !important;
+        padding: 30px 0;
     }
     @media (min-width: 375px) and (max-width: 411px) {
         width: 375px !important;
+        padding: 20px 0;
     }
     @media (min-width: 360px) and (max-width: 374px) {
         width: 360px !important;
+        padding: 20px 0;
     }
     @media (min-width: 320px) and (max-width: 359px) {
         width: 320px !important;
+        padding: 20px 0;
     }
 }
 @font-face {
@@ -47,6 +53,12 @@ body {
     line-height: 1.428571429;
     color: #333;
     background-color: #fff;
+    @media (max-width: 767px){
+        font-size: 12px;
+    }
+    @media (max-width: 411px){
+        font-size: 10px;
+    }
 }
 * {
     box-sizing: border-box;
@@ -61,9 +73,12 @@ img {
     // height: 100%;
 }
 .tray {
-    margin-top: 30px;
+    margin-top: 50px;
     clear: both;
     overflow: hidden;
+    @media (max-width: 639px){
+        margin-top: 30px;
+    }
 }
 .tray__title {
     margin-bottom: 5px;
@@ -78,6 +93,18 @@ img {
         position: relative;
         text-transform: uppercase;
         font-weight: 500;
+        @media (max-width: 1023px) {
+            font-size: 22px;
+        }
+        @media (max-width: 767px) {
+            font-size: 20px;
+        }
+        @media (max-width: 479px) {
+            font-size: 18px;
+        }
+        @media (max-width: 374px) {
+            font-size: 16px;
+        }
     }
     svg {
         height: 25px;
@@ -141,10 +168,14 @@ img {
         @media (max-width: 375px) {
             height: 97px;
         }
-        img {
-            width: 100%;
-            height: 100%;
-            transition: transform 0.3s;
+        span {
+            height: 100% !important;
+            width: 100% !important;
+            img {
+                width: 100% !important;
+                height: 100% !important;
+                transition: transform 0.3s;
+            }
         }
         .tray-item-play-button {
             background: rgba(0, 0, 0, 0.6);
@@ -227,8 +258,8 @@ img {
             font-size: 14px;
         }
         @media (max-width: 639px) {
-            font-size: 14px;
-            max-height: 40px;
+            font-size: 12px;
+            max-height: 35px;
         }
     }
     .tray-item-meta-info {
@@ -248,7 +279,8 @@ img {
             width: 60%;
         }
         .tray-episode-views {
-            float: right !important;
+            // float: right !important;
+            text-align: right;
         }
     }
 }
@@ -528,6 +560,9 @@ img {
         @media (max-width: 359px) {
             gap: 5px;
         }
+        a{
+            display: inline-flex !important;
+        }
         &:hover {
             img {
                 opacity: 0.8;
@@ -555,52 +590,53 @@ img {
             height: 100% !important;
             width: 100% !important;
             img {
-                height: 100% !important;
+                height: 100%;
+                width: 100%;
             }
         }
-        img {
+        span {
             height: 100%;
             @media (min-width: 1024px) {
                 transition: opacity 0.3s ease-in-out;
             }
             @media (min-width: 1366px) {
-                width: 150px;
+                width: 150px !important;
             }
             @media (min-width: 1280px) and (max-width: 1365px) {
-                width: 134px;
+                width: 134px !important;
             }
             @media (min-width: 1024px) and (max-width: 1279px) {
-                width: 104px;
+                width: 104px !important;
             }
             @media (min-width: 800px) and (max-width: 1023px) {
-                width: 187px;
+                width: 187px !important;
             }
             @media (min-width: 768px) and (max-width: 799px) {
-                width: 179px;
+                width: 179px !important;
             }
             @media (min-width: 640px) and (max-width: 767px) {
-                width: 100%;
-                height: 181px;
+                width: 100% !important;
+                height: 181px !important;
             }
             @media (min-width: 480px) and (max-width: 639px) {
-                height: 134px;
-                width: 225px;
+                height: 134px !important;
+                width: 225px !important;
             }
             @media (min-width: 412px) and (max-width: 479px) {
-                height: 114px;
-                width: 191px;
+                height: 114px !important;
+                width: 191px !important;
             }
             @media (min-width: 375px) and (max-width: 411px) {
-                height: 103px;
-                width: 172.5px;
+                height: 103px !important;
+                width: 172.5px !important;
             }
             @media (min-width: 360px) and (max-width: 374px) {
-                height: 98px;
-                width: 165px;
+                height: 98px !important;
+                width: 165px !important;
             }
             @media (max-width: 359px) {
-                height: 91px;
-                width: 153px;
+                height: 91px !important;
+                width: 153px !important;
             }
         }
     }
@@ -618,9 +654,9 @@ img {
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            // white-space: nowrap;
+            // white-space: nowrap; 
             @media (min-width: 1280px) {
-                font-size: 16px;
+                font-size: 14px;
             }
             @media (min-width: 1024px) and (max-width: 1279px) {
                 font-size: 14px;
@@ -705,11 +741,23 @@ img {
     }
 
     .manga-item-title {
+        position: absolute;
         bottom: 0;
         color: #fff !important;
         left: 0;
         right: 0;
         overflow: hidden;
+        span {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            @media (max-width: 640px){
+                -webkit-line-clamp: 1;  
+            }
+        }
         @media (min-width: 1024px) {
             background-image: linear-gradient(
                 transparent,
@@ -719,11 +767,11 @@ img {
                 rgba(0, 0, 0, 0.7),
                 rgba(0, 0, 0, 0.9)
             );
-            padding: 30px 10px 10px;
-            position: absolute;
+            // padding: 30px 10px 10px;
             font-size: 15px;
             line-height: 20px;
             margin-top: 10px;
+            padding: 0 10px 10px;
         }
         @media (max-width: 1023px) {
             background-image: linear-gradient(
@@ -735,8 +783,6 @@ img {
                 rgba(0, 0, 0, 0.9)
             );
             position: absolute;
-            text-overflow: ellipsis;
-            white-space: nowrap;
         }
         @media (min-width: 800px) and (max-width: 1023px) {
             font-size: 14px;
@@ -747,14 +793,17 @@ img {
             padding: 30px 5px 5px;
         }
         @media (min-width: 640px) and (max-width: 767px) {
-            font-size: 16px;
+            font-size: 14px;
             margin-top: 5px;
+            padding: 5px;
         }
         @media (min-width: 412px) and (max-width: 639px) {
-            font-size: 15px;
+            font-size: 12px;
+            padding: 5px;
         }
         @media (max-width: 411px) {
-            font-size: 14px;
+            font-size: 12px;
+            padding: 5px;
         }
     }
     .manga-item-meta-info {
@@ -787,6 +836,9 @@ img {
             border: 1px solid;
             border-radius: 3px;
             padding: 0 5px;
+            @media (max-width: 767px) {
+                font-size: 12px !important;
+            }
         }
     }
 }

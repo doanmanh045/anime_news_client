@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { firestore } from '../../utils/firebaseInit';
-import VideoCartoon from '../home-video/VideoCartoon';
-import VideoManga from '../home-video/VideoManga';
-import VideoNewest from '../home-video/VideoNewest';
+import VideoCartoon from './VideoCartoon';
+import VideoManga from './VideoManga';
+import VideoNewest from './VideoNewest';
 import HeaderBlog from '../share/HeaderBlog';
 import VideoCategory from './VideoCategory';
 export default function DetailVideo({ video }) {
@@ -29,7 +29,7 @@ export default function DetailVideo({ video }) {
                     <div className='player'>
                         <div className='player__main'>
                             <div className='player__main--video'>
-                                <iframe className='hero-player' src={`https://www.youtube.com/embed/${video.id}`} title={video?.title} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe className='hero-player' src={`https://www.youtube.com/embed/${video.id}`} title={video?.title} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                                 <div className="player-meta">
                                     <h1 className="film-info-title">{video?.title}</h1>
                                     <div className="film-info-views">
@@ -39,15 +39,15 @@ export default function DetailVideo({ video }) {
                             </div>
                             <VideoCategory videoId={video.id} categoryId={video.categoryId} />
                             <div className='player__main--content'>
-                                <div class="film-content">
-                                    <div class="film__info">
-                                        <div class="film__info--genre">
+                                <div className="film-content">
+                                    <div className="film__info">
+                                        <div className="film__info--genre">
                                             Danh mục: {video?.category?.title}
                                         </div>
-                                        <div class="film__info--description"
+                                        <div className="film__info--description"
                                             dangerouslySetInnerHTML={{ __html: video?.content }}>
                                         </div>
-                                        <div class="film__info--tag">
+                                        <div className="film__info--tag">
                                         </div>
                                     </div>
 
@@ -57,9 +57,9 @@ export default function DetailVideo({ video }) {
 
                     </div>
                 </div>
-                <VideoCartoon />
-                <VideoManga />
-                <VideoNewest />
+                <VideoCartoon videoId={video.id} />
+                <VideoManga videoId={video.id} />
+                <VideoNewest videoId={video.id} />
             </div>
 
         </>

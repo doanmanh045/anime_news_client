@@ -1,37 +1,33 @@
-import React from 'react'
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react'
+import { convertUrlSlug } from '../../utils/RegexUrl';
+import { searchCategoryBlog } from '../../utils/searchCategoryBlog';
 
 export default function NavHomeBlog() {
+    const [categories, setCategories] = useState([]);
+    const [activeTitile, setActiveTitle] = useState();
+    useEffect(() => {
+        search()
+    }, [])
+    const search = async () => {
+        let data = await searchCategoryBlog();
+        setCategories(data)
+    }
     return (
         <section className='nav__blog'>
             <div className='container'>
                 <ul className='list__nav'>
-                    <li className='list__nav--item'>
-                        <a href='#'>Đề cử anime</a>
-                    </li>
-                    <li className='list__nav--item'>
-                        <a href='#'>tin tức anime</a>
-                    </li>
-                    <li className='list__nav--item'>
-                        <a href='#'>tin tức manga</a>
-                    </li>
-                    <li className='list__nav--item'>
-                        <a href='#'>nhân vật</a>
-                    </li>
-                    <li className='list__nav--item'>
-                        <a href='#'>văn hóa nhật bản</a>
-                    </li>
-                    <li className='list__nav--item'>
-                        <a href='#'>review & spoiler</a>
-                    </li>
-                    <li className='list__nav--item'>
-                        <a href='#'>cosplay</a>
-                    </li>
-                    <li className='list__nav--item'>
-                        <a href='#'>fanmade</a>
-                    </li>
-                    <li className='list__nav--item'>
-                        <a href='#'>tổng hợp</a>
-                    </li>
+                    {categories.length > 0 &&
+                        categories.map((category, index) => {
+                            return (
+                                <Link key={index} href={`/the-loai/${convertUrlSlug(category.title.substring(0, 35))}-${category.id}`} >
+                                    <li className={activeTitile == category.title ? 'list__nav--item active-list__nav--item' : 'list__nav--item  '} onClick={() => setActiveTitle(category.title)} >
+                                        <span>{category.title}</span>
+                                    </li>
+                                </Link>
+                            )
+                        })
+                    }
                 </ul>
             </div>
 

@@ -14,7 +14,7 @@ export default function RandomMainHomeBlog() {
         const elements = [];
 
         function getRandomElement(arr) {
-            if (elements.length < numberOfRandomElementsToExtract) {
+            if (elements?.length < numberOfRandomElementsToExtract) {
                 const index = Math.floor(Math.random() * arr.length)
                 const element = arr.splice(index, 1)[0];
                 elements.push(element)
@@ -49,7 +49,7 @@ export default function RandomMainHomeBlog() {
     }
     return (
         <>
-            {blogs.length > 0 && <><div className='collumn-block'>
+            {blogs?.length > 0 && <><div className='collumn-block'>
                 {blogs.map((blog, index) => {
                     return (
                         <Link href={`/blog/${convertUrlSlug(blog?.title.substring(0, 35))}-${blog?.id}`} key={index} >

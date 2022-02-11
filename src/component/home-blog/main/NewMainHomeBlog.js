@@ -19,7 +19,7 @@ export default function NewMainHomeBlog() {
                 .orderBy("createdDate", "desc")
                 .limit(LIMIT)
 
-            if (blogs && blogs.length > 0) {
+            if (blogs && blogs?.length > 0) {
                 filter = filter.startAfter(blogs[blogs.length - 1].createdDate)
             }
             let querySnapshot = await (await filter.get()).docs

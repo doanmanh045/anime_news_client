@@ -1,16 +1,32 @@
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { convertUrlSlug } from '../../utils/RegexUrl';
-import { searchVideoByCategory } from '../../utils/searchVideoByCategory';
+import { firestore } from '../../utils/firebaseInit';
 import Link from 'next/link';
-export default function VideoCartoon() {
+import { getElementsArray } from '../../utils/ElementsArray';
+export default function VideoCartoon({ videoId }) {
     const [videos, setVideos] = useState([])
     useEffect(() => {
         search()
-    }, [])
+    }, [videoId])
     const search = async () => {
-        let data = await searchVideoByCategory('Phim hoạt hình', 8);
-        setVideos(data)
+        try {
+            let filter = firestore
+                .collection("Video")
+                .where("category.title", "==", "Phim hoạt hình")
+                .orderBy("createdDate", "desc")
+                .limit(8)
+
+            let querySnapshot = await (await filter.get()).docs
+            let resp = []
+            querySnapshot.forEach(doc => {
+                resp.push({ ...doc.data(), id: doc.id })
+            });
+            let data = resp.filter(item => item.id !== videoId)
+            setVideos(getElementsArray(data,8))
+        } catch (error) {
+
+        }
     }
     return (
         <section className='tray cartoon'>
@@ -25,8 +41,8 @@ export default function VideoCartoon() {
             <div className='tray__content episode__item'>
                 {videos?.length > 0 && videos.map((video, index) => {
                     return (
-                        <Link href={`/video/${convertUrlSlug(video.title.substring(0, 35))}-${video.id}`} key={index} >
-                            <div className='tray__content--item' style={{cursor:'pointer'}} >
+                        <Link href={`/video/${convertUrlSlug(video?.title.substring(0, 35))}-${video?.id}`} key={index} >
+                            <div className='tray__content--item' style={{ cursor: 'pointer' }} >
                                 {video?.photoURL ? <Image unoptimized loader={() => { return `${video?.photoURL}` }} src={video?.photoURL} width='320' height="225" />
                                     : <Image src={require('../../images/item.jpg')} width='320' height="225" />
                                 }

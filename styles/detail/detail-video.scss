@@ -237,6 +237,9 @@
     @media (min-width: 1024px) {
         border: 1px solid #ddd;
     }
+    @media (max-width: 1023px){
+        margin-left: 0;
+    }
     &--header {
         display: flex;
         justify-content: space-between;
