@@ -4,7 +4,7 @@ export default function SmallItem() {
     return (
         <div className='main-blog__right--item'>
             <div className='wrapper'>
-                <img src={ItemRight} alt="" />
+                <Image src={ItemRight} alt="" />
                 <div className='item-meta'>
                     <a href='#'>
                         <span className="item-genre">Tin tức anime </span>
