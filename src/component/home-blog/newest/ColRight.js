@@ -14,7 +14,7 @@ export default function ColRight() {
                 <div className='item__video'>
                     <div className='thumbnail__video'>
                         <div className='wrapper'>
-                            <Image src={SmallThumbnail} alt='' />
+                            <img src={SmallThumbnail} alt='' />
                         </div>
                     </div>
                     <div className='content__video'>
@@ -31,7 +31,7 @@ export default function ColRight() {
                 <div className='item__video'>
                     <div className='thumbnail__video'>
                         <div className='wrapper'>
-                            <Image src={SmallThumbnail} alt='' />                                </div>
+                            <img src={SmallThumbnail} alt='' />                                </div>
                     </div>
                     <div className='content__video'>
                         <a href='#'>
@@ -47,7 +47,7 @@ export default function ColRight() {
                 <div className='item__video'>
                     <div className='thumbnail__video'>
                         <div className='wrapper'>
-                            <Image src={SmallThumbnail} alt='' />                                </div>
+                            <img src={SmallThumbnail} alt='' />                                </div>
                     </div>
                     <div className='content__video'>
                         <a href='#'>
@@ -63,7 +63,7 @@ export default function ColRight() {
                 <div className='item__video'>
                     <div className='thumbnail__video'>
                         <div className='wrapper'>
-                            <Image src={SmallThumbnail} alt='' />                                </div>
+                            <img src={SmallThumbnail} alt='' />                                </div>
                     </div>
                     <div className='content__video'>
                         <a href='#'>
@@ -79,7 +79,7 @@ export default function ColRight() {
                 <div className='item__video lg-hidden'>
                     <div className='thumbnail__video'>
                         <div className='wrapper'>
-                            <Image src={SmallThumbnail} alt='' />                                </div>
+                            <img src={SmallThumbnail} alt='' />                                </div>
                     </div>
                     <div className='content__video'>
                         <a href='#'>

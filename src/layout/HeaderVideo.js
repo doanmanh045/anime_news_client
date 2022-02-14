@@ -9,7 +9,7 @@ export default function HeaderVideo() {
                         <div className='wrapper__header--left'>
                             <div className="logo">
                                 <a href="/">
-                                    <Image src={Logo} alt='' />
+                                    <img src={Logo} alt='' />
 
                                 </a>
                             </div>
