@@ -1,6 +1,5 @@
 import React from 'react'
 import BigLogo from '../../images/logo.png';
-import SmLogo from '../../images/smlogo.png';
 import Image from 'next/image';
 import Link from 'next/link';
 export default function HeaderBlog() {
