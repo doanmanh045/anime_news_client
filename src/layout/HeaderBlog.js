@@ -1,6 +1,6 @@
 import React from 'react'
 import Logo from '../images/logo.png';
-import Image from 'next/image';
+
 export default function HeaderBlog() {
     return (
         <header>

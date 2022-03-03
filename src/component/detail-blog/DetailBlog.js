@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React, { useEffect } from 'react';
 import Avatar from '../../images/detail/detail-blog/avatar.jpg';
 import { firestore } from '../../utils/firebaseInit';
@@ -6,6 +5,7 @@ import BlogInDay from '../detail-blog/BlogInDay';
 import BlogNew from '../detail-blog/BlogNew';
 import BlogRecently from '../detail-blog/BlogRecently';
 import NavHomeBlog from '../home-blog/NavHomeBlog';
+import { FacebookProvider, Comments } from 'react-facebook';
 export default function DetailBlog({ blog }) {
     let fetchViews = async () => {
         try {
@@ -20,7 +20,7 @@ export default function DetailBlog({ blog }) {
         }
     }
     useEffect(() => {
-        fetchViews()
+        fetchViews();
     }, [])
     return (
         <div className='detail-page'>
@@ -54,62 +54,9 @@ export default function DetailBlog({ blog }) {
                             </div>
                         </div>
                         <div className='main-comment'>
-                            <div className='main-comment__filter'>
-                                <div className='main-comment__filter--left'>
-                                    <span>
-                                        <b className='number-comment'>3 Comments</b>
-                                    </span>
-                                </div>
-                                <div className='main-comment__filter--right'>
-                                    <label htmlFor="filter">Sort by</label>
-                                    <select name="filter" id="filter">
-                                        <option value="Newest">Newest</option>
-                                        <option value="Oldest">Oldest</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className='main-comment__content'>
-                                <div className='self-comment comment'>
-                                    <div className='avatar'>
-                                        <Image src={Avatar} alt='' />
-                                    </div>
-                                    <div className='type-comment'>
-                                        <input type='text' className='' placeholder='Add a comment...' />
-                                    </div>
-                                </div>
-                                <div className='comment'>
-                                    <div className='avatar'>
-                                        <Image src={Avatar} alt='' />
-                                    </div>
-                                    <div className='type-comment'>
-                                        <b className='name'>Hoang Hung</b>
-                                        <p>Troi oi</p>
-                                        <div className='action'>
-                                            <a href="#">Like</a>
-                                            <span aria-hidden="true"> · </span>
-                                            <a href="#">Reply</a>
-                                            <span aria-hidden="true"> · </span>
-                                            <span className='time'>6h</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='comment'>
-                                    <div className='avatar'>
-                                        <Image src={Avatar} alt='' />
-                                    </div>
-                                    <div className='type-comment'>
-                                        <b className='name'>Hoang Hung</b>
-                                        <p>Troi oi</p>
-                                        <div className='action'>
-                                            <a href="#">Like</a>
-                                            <span aria-hidden="true"> · </span>
-                                            <a href="#">Reply</a>
-                                            <span aria-hidden="true"> · </span>
-                                            <span className='time'>6h</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <FacebookProvider appId="4841289672632994">
+                                <Comments href={`https://anime4u.vn`+`${blog?.id}`} />
+                            </FacebookProvider>
                             <hr />
                             <BlogNew blogId={blog?.id} />
                         </div>
