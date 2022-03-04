@@ -4,7 +4,7 @@ export default function LargeItem() {
     return (
         <div className='main-blog__middle--item'>
             <div className='wrapper'>
-                <Image src={ItemMiddle} alt="" />
+                <img src={ItemMiddle} alt="" />
                 <div className='item-meta'>
                     <a href='#'>
                         <span className="item-genre">Tin tức anime </span>

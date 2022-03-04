@@ -5,7 +5,7 @@ export default function MediumItem() {
         <div className='main-blog__left--item'>
             <div className='wrapper'>
                 <div className='top__image'>
-                    <Image src={ItemLeft} alt="" />
+                    <img src={ItemLeft} alt="" />
                 </div>
                 <div className='bottom__content'>
                     <div className='bottom__content--left'>
