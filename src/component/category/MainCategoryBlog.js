@@ -40,7 +40,7 @@ export default function MainCategoryBlog({ category }) {
                 <div className='anime-nomination__col large__col'>
                     {blogLefts?.length > 0 && blogLefts.map((blog, index) => {
                         return (
-                            <Link href={`/the-loai/${convertUrlSlug(blog?.category.title.substring(0, 35))}-${blog?.category.id}`} key={index} >
+                            <Link href={`/blog/${convertUrlSlug(blog?.title.substring(0, 35))}-${blog?.id}`} key={index} >
                                 <div className='large__col--item'>
                                     <div className='wrapper'>
                                         {blog?.photoURL ? <Image unoptimized loader={() => { return `${blog?.photoURL}` }} src={blog?.photoURL} width='500' height="225" />
@@ -64,7 +64,7 @@ export default function MainCategoryBlog({ category }) {
                 <div className='anime-nomination__col medium__col'>
                     {blogMediums?.length > 0 && blogMediums.map((blog, index) => {
                         return (
-                            <Link href={`/the-loai/${convertUrlSlug(blog.category.title.substring(0, 35))}-${blog.category.id}`} key={index} >
+                            <Link href={`/blog/${convertUrlSlug(blog?.title.substring(0, 35))}-${blog?.id}`} key={index} >
                                 <div className={`medium__col--item ${index == 3 && 'sm-hidden'}`} style={{ cursor: 'pointer' }}  >
                                     <div className='wrapper'>
                                         <div className='top__image'>
@@ -98,7 +98,7 @@ export default function MainCategoryBlog({ category }) {
                     <div className='wrapper'>
                         {blogRights?.length > 0 && blogRights.map((blog, index) => {
                             return (
-                                <Link href={`/the-loai/${convertUrlSlug(blog.category.title.substring(0, 35))}-${blog.category.id}`} >
+                                <Link href={`/blog/${convertUrlSlug(blog?.title.substring(0, 35))}-${blog?.id}`} >
                                     <div className='xs-item' key={index} >
                                         <div className='item__small--thumbnail item__thumbnail'>
                                             {blog?.photoURL ? <Image unoptimized loader={() => { return `${blog?.photoURL}` }} src={blog?.photoURL} width='300' height="225" />
