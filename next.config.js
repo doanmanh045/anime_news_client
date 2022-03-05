@@ -1,5 +1,10 @@
-const sass = require('@zeit/next-sass')
+// const withSass = require('@zeit/next-sass')
 
 module.exports = {
-  reactStrictMode: true,
-}
+  webpack(config, { dev }) {
+    if (dev) {
+      config.devtool = 'source-map';
+    }
+    return config;
+  }
+};
