@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Avatar from '../../images/detail/detail-blog/avatar.jpg';
 import { firestore } from '../../utils/firebaseInit';
 import BlogInDay from '../detail-blog/BlogInDay';
@@ -7,6 +7,7 @@ import BlogRecently from '../detail-blog/BlogRecently';
 import NavHomeBlog from '../home-blog/NavHomeBlog';
 import { FacebookProvider, Comments } from 'react-facebook';
 export default function DetailBlog({ blog }) {
+    const [render,setRender] = useState(false);
     let fetchViews = async () => {
         try {
             await firestore.collection("Blog").doc(blog.id).get().then(doc => {
@@ -21,6 +22,7 @@ export default function DetailBlog({ blog }) {
     }
     useEffect(() => {
         fetchViews();
+        setRender(true);
     }, [])
     return (
         <div className='detail-page'>
@@ -43,14 +45,14 @@ export default function DetailBlog({ blog }) {
                         {blog?.metaDescription}
                     </div>
                     <div className='content-detail'  >
-                        <p dangerouslySetInnerHTML={{ __html: blog?.content }} ></p>
+                        <p dangerouslySetInnerHTML={{ __html: render && blog?.content }} ></p>
                         <p className='author'>{blog?.user?.displayName}</p>
                     </div>
                     <div className="news-comment">
                         <div className='section section__title section-title-small'>
                             <div className='section__title--border'></div>
                             <div className='section__title--background'>
-                                BÌnh luận
+                                Bình luận
                             </div>
                         </div>
                         <div className='main-comment'>
