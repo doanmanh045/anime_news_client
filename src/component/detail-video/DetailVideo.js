@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { firestore } from '../../utils/firebaseInit';
+import Head from 'next/head'
 import VideoCartoon from './VideoCartoon';
 import VideoManga from './VideoManga';
 import VideoNewest from './VideoNewest';
@@ -23,6 +24,11 @@ export default function DetailVideo({ video }) {
     }, [])
     return (
         <>
+            <Head>
+                <meta property="og:title" content={video?.title} />
+                <meta property="og:image" content={video?.photoURL} />
+                <meta property="og:description" content={video?.title} />
+            </Head>
             <HeaderBlog />
             <div className='section container-video'>
                 <div className='container-video main-detail'>
