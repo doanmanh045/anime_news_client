@@ -1,5 +1,6 @@
 import React from 'react';
-import BigLogo from '../../images/logo.png';
+import Head from 'next/head'
+
 import FavouriteMainHomeBlog from './main/FavouriteMainHomeBlog';
 import NewMainHomeBlog from './main/NewMainHomeBlog';
 import RandomMainHomeBlog from './main/RandomMainHomeBlog';
